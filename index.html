@@ -73,6 +73,28 @@
   .option-btn:active {
     transform: scale(0.97);
   }
+  /* ホバー効果はマウス操作可能な端末のみに限定する。
+     スマホ等のタッチ端末に:hoverを効かせると、タップ後に画面が
+     再描画された際、次のボタンに「疑似ホバー」が貼り付いたまま
+     残ってしまう不具合が起きるため。 */
+  @media (hover: hover) and (pointer: fine) {
+    .opt-choice:hover {
+      background: #ffe4ea;
+      border-color: #ffa8bd;
+    }
+    .opt-share:hover {
+      border-color: #ffa8bd;
+    }
+    .opt-cta-pink:hover {
+      background: linear-gradient(to right, #ff6690, #ff4f80);
+    }
+    .opt-cta-mint:hover {
+      background: linear-gradient(to right, #5fd6a3, #3ec98f);
+    }
+    .link-muted:hover {
+      color: #ff6690;
+    }
+  }
   .pop {
     animation: pop 0.5s cubic-bezier(.36,1.6,.5,1) both;
   }
@@ -365,7 +387,7 @@
               <button
                 type="button"
                 data-value="${opt.value}"
-                class="option-btn text-center bg-gradient-to-br from-white to-pinky-50 hover:from-pinky-100 hover:to-pinky-200 border-2 border-pinky-100 hover:border-pinky-300 rounded-xl px-2 py-3 shadow-sm">
+                class="option-btn opt-choice text-center bg-gradient-to-br from-white to-pinky-50 border-2 border-pinky-100 rounded-xl px-2 py-3 shadow-sm">
                 <span class="font-bold text-gray-700 text-xs sm:text-sm">${opt.label}</span>
               </button>
             `
@@ -381,7 +403,7 @@
               <button
                 type="button"
                 data-value="${opt.value}"
-                class="option-btn w-full flex items-center gap-3 text-left bg-gradient-to-br from-white to-pinky-50 hover:from-pinky-100 hover:to-pinky-200 border-2 border-pinky-100 hover:border-pinky-300 rounded-2xl px-4 py-4 shadow-sm">
+                class="option-btn opt-choice w-full flex items-center gap-3 text-left bg-gradient-to-br from-white to-pinky-50 border-2 border-pinky-100 rounded-2xl px-4 py-4 shadow-sm">
                 <span class="text-2xl">${opt.emoji || "🍀"}</span>
                 <span class="font-bold text-gray-700 text-sm sm:text-base">${opt.label}</span>
               </button>
@@ -400,7 +422,7 @@
       <div class="mt-6 flex justify-start">
         ${
           showBack
-            ? `<button id="back-btn" type="button" class="text-xs sm:text-sm font-bold text-gray-400 hover:text-pinky-500 flex items-center gap-1 px-2 py-2">← 前の質問に戻る</button>`
+            ? `<button id="back-btn" type="button" class="link-muted text-xs sm:text-sm font-bold text-gray-400 flex items-center gap-1 px-2 py-2">← 前の質問に戻る</button>`
             : ""
         }
       </div>
@@ -720,7 +742,7 @@
           <p class="text-[11px] sm:text-xs text-gray-400 mt-2">※児童手当・出産関連給付・自治体独自支援の合計概算</p>
         </div>
 
-        <button id="share-btn" type="button" class="option-btn w-full flex items-center justify-center gap-1 text-center bg-white border-2 border-pinky-200 hover:border-pinky-300 text-pinky-500 font-bold text-xs sm:text-sm rounded-2xl px-3 py-3 shadow-sm mb-1">
+        <button id="share-btn" type="button" class="option-btn opt-share w-full flex items-center justify-center gap-1 text-center bg-white border-2 border-pinky-200 text-pinky-500 font-bold text-xs sm:text-sm rounded-2xl px-3 py-3 shadow-sm mb-1">
           📸 結果をシェアする
         </button>
         <p id="share-status" class="text-center text-[11px] text-gray-400 mb-6 min-h-[14px]"></p>
@@ -740,18 +762,18 @@
         </p>
 
         <div class="space-y-3 mb-6">
-          <a href="#" class="option-btn block text-center bg-gradient-to-r from-pinky-400 to-pinky-500 hover:from-pinky-500 hover:to-pinky-600 text-white font-bold text-sm sm:text-base rounded-2xl px-4 py-4 shadow-soft leading-snug">
+          <a href="#" class="option-btn opt-cta-pink block text-center bg-gradient-to-r from-pinky-400 to-pinky-500 text-white font-bold text-sm sm:text-base rounded-2xl px-4 py-4 shadow-soft leading-snug">
             【全員対象】今後の教育資金・マイホーム計画を<br class="hidden sm:block">子育て専門FPに無料相談して、家計を賢く節約する<br>
             <span class="text-[11px] sm:text-xs font-normal opacity-90">（プレゼント付き）</span>
           </a>
-          <a href="#" class="option-btn block text-center bg-gradient-to-r from-mint-300 to-mint-400 hover:from-mint-400 hover:to-mint-500 text-white font-bold text-sm sm:text-base rounded-2xl px-4 py-4 shadow-card leading-snug">
+          <a href="#" class="option-btn opt-cta-mint block text-center bg-gradient-to-r from-mint-300 to-mint-400 text-white font-bold text-sm sm:text-base rounded-2xl px-4 py-4 shadow-card leading-snug">
             【今のうちに】各社の学資保険・子育て積立プランを<br class="hidden sm:block">無料で一括資料請求する
           </a>
         </div>
 
         <div class="flex justify-between items-center">
-          <button id="back-btn" type="button" class="text-xs sm:text-sm font-bold text-gray-400 hover:text-pinky-500 px-2 py-2">← 前の質問に戻る</button>
-          <button id="restart-btn" type="button" class="text-xs sm:text-sm font-bold text-pinky-400 hover:text-pinky-500 px-2 py-2">🔄 最初からやり直す</button>
+          <button id="back-btn" type="button" class="link-muted text-xs sm:text-sm font-bold text-gray-400 px-2 py-2">← 前の質問に戻る</button>
+          <button id="restart-btn" type="button" class="link-muted text-xs sm:text-sm font-bold text-pinky-400 px-2 py-2">🔄 最初からやり直す</button>
         </div>
       </div>
     `;
