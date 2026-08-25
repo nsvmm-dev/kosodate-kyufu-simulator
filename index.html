@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>2026年最新対応｜わが家はいくらもらえる？子育て給付金・手当一発判定ナビ</title>
+<meta name="description" content="妊娠中・子育て中のご家庭向け、もらえる給付金・手当を1分でかんたん診断！児童手当や出産育児一時金、自治体独自の支援金まで、高校卒業までの総額をまるっと判定します。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          rounded: ['"M PLUS Rounded 1c"', 'sans-serif'],
+        },
+        colors: {
+          pinky: {
+            50: '#fff5f7',
+            100: '#ffe4ea',
+            200: '#ffc9d6',
+            300: '#ffa8bd',
+            400: '#ff86a8',
+            500: '#ff6690',
+          },
+          mint: {
+            50: '#f0fdf7',
+            100: '#d9f9ea',
+            200: '#b7f1d6',
+            300: '#8ee6bd',
+            400: '#5fd6a3',
+          },
+          cream: {
+            50: '#fffaf1',
+            100: '#fff2dc',
+            200: '#ffe6bd',
+          },
+        },
+        boxShadow: {
+          soft: '0 10px 30px -10px rgba(255, 102, 144, 0.35)',
+          card: '0 6px 20px -6px rgba(0,0,0,0.08)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background: linear-gradient(160deg, #fff5f7 0%, #fff2dc 45%, #f0fdf7 100%);
+    min-height: 100vh;
+  }
+  .fade-enter {
+    animation: fadeIn 0.45s ease forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-out {
+    animation: fadeOut 0.25s ease forwards;
+  }
+  @keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+  }
+  .option-btn {
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  }
+  .option-btn:active {
+    transform: scale(0.97);
+  }
+  .pop {
+    animation: pop 0.5s cubic-bezier(.36,1.6,.5,1) both;
+  }
+  @keyframes pop {
+    0% { transform: scale(0.7); opacity: 0; }
+    70% { transform: scale(1.06); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-thumb { background: #ffc9d6; border-radius: 10px; }
+</style>
+</head>
+<body class="text-gray-700">
+
+<div class="max-w-xl mx-auto px-4 py-6 sm:py-10">
+
+  <!-- ヘッダー -->
+  <header class="text-center mb-6">
+    <p class="inline-block bg-pinky-100 text-pinky-500 text-xs sm:text-sm font-bold px-4 py-1 rounded-full mb-2">2026年最新対応</p>
+    <h1 class="text-xl sm:text-2xl font-black text-gray-700 leading-snug">
+      わが家はいくらもらえる？<br>
+      <span class="text-pinky-500">子育て給付金・手当</span>一発判定ナビ
+    </h1>
+    <p class="text-xs sm:text-sm text-gray-400 mt-2">かんたん4ステップ・30秒で診断！</p>
+  </header>
+
+  <!-- プログレスバー -->
+  <div id="progress-wrap" class="mb-6">
+    <div class="flex justify-between text-xs font-bold text-pinky-400 mb-1">
+      <span id="progress-label">Q1 / 4</span>
+      <span id="progress-percent">0%</span>
+    </div>
+    <div class="w-full h-3 bg-white rounded-full shadow-inner overflow-hidden">
+      <div id="progress-bar" class="h-full bg-gradient-to-r from-pinky-300 to-pinky-500 rounded-full transition-all duration-500 ease-out" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- メインカード -->
+  <main id="app-card" class="bg-white/90 backdrop-blur rounded-3xl shadow-card p-5 sm:p-8 min-h-[380px] flex flex-col">
+    <div id="step-container" class="flex-1"></div>
+  </main>
+
+  <!-- 広告スペース -->
+  <div class="mt-8 border-2 border-dashed border-gray-300 rounded-2xl py-6 text-center text-gray-400 text-xs sm:text-sm bg-white/50">
+    広告スペース（Google AdSense 等）
+  </div>
+
+  <footer class="text-center text-[11px] text-gray-400 mt-6 leading-relaxed">
+    ※本診断は2026年時点の公開情報をもとにした概算シミュレーションです。実際の受給額・要件は必ずお住まいの自治体窓口でご確認ください。<br>
+    © 2026 子育て給付金・手当一発判定ナビ
+  </footer>
+</div>
+
+<!-- SNSシェア用画像のもと（画面には表示せず、html2canvasでの撮影専用） -->
+<div id="share-card" class="font-rounded" style="position: fixed; left: -9999px; top: 0; width: 600px; padding: 40px; background: linear-gradient(135deg, #ffe4ea 0%, #fff2dc 55%, #d9f9ea 100%);"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  // シェア用リンクは常にトップページ固定（クエリ・ハッシュを含めない）
+  // → 共有された相手が開いても、投稿者本人の診断結果は表示されない
+  const TOP_URL = window.location.origin + window.location.pathname;
+
+  // ---------------------------------------------------------
+  // 状態管理
+  // ---------------------------------------------------------
+  const state = {
+    q1: null,          // pregnant / one / two / threeplus
+    q2_pregnant: null,  // early / mid / late
+    q2_one: null,       // 0-2 / 3-5 / 6plus
+    q2_top: null,       // under3 / 3-5 / 6-11 / 12plus
+    q2_second: null,    // under3 / 3-5 / 6-11 / 12plus
+    q3: null,           // 都道府県名（例: "東京都"）
+    q4: null,           // low / mid / high
+  };
+
+  let flow = ["q1"];       // 画面遷移の順序（動的に組み立てる）
+  let currentIndex = 0;
+
+  const stepContainer = document.getElementById("step-container");
+  const progressBar = document.getElementById("progress-bar");
+  const progressLabel = document.getElementById("progress-label");
+  const progressPercent = document.getElementById("progress-percent");
+
+  // ---------------------------------------------------------
+  // 都道府県リスト（全47）
+  // ---------------------------------------------------------
+  const PREFECTURES = [
+    "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
+    "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県",
+    "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県",
+    "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県",
+    "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県",
+    "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県",
+    "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県",
+  ];
+
+  // ---------------------------------------------------------
+  // 質問定義
+  // ---------------------------------------------------------
+  const questionDefs = {
+    q1: {
+      title: "現在、お子さんは何人いますか？",
+      sub: "妊娠中の方は、現在生まれているお子さんの人数でお答えください（新しい妊娠については後ほど伺います）",
+      key: "q1",
+      options: [
+        { label: "まだいない（現在妊娠中）", value: "pregnant", emoji: "🤰" },
+        { label: "子どもが1人", value: "one", emoji: "👶" },
+        { label: "子どもが2人", value: "two", emoji: "👦👧" },
+        { label: "子どもが3人以上", value: "threeplus", emoji: "👨‍👩‍👧‍👦" },
+      ],
+    },
+    q2_pregnant: {
+      title: "現在の妊娠月数は？",
+      sub: "だいたいで大丈夫です",
+      key: "q2_pregnant",
+      options: [
+        { label: "初期（1〜4ヶ月）", value: "early", emoji: "🌱" },
+        { label: "中期（5〜7ヶ月）", value: "mid", emoji: "🌸" },
+        { label: "後期（8ヶ月〜）", value: "late", emoji: "🎀" },
+      ],
+    },
+    q_pregnant_check: {
+      title: "現在、新しく妊娠していますか？",
+      sub: "今いるお子さんに加えて、お腹に赤ちゃんがいる場合は「はい」を選んでください",
+      key: "q_pregnant_check",
+      options: [
+        { label: "はい、妊娠中です", value: "yes", emoji: "🤰" },
+        { label: "いいえ、妊娠していません", value: "no", emoji: "🙅" },
+      ],
+    },
+    q_pregnant_extra: {
+      title: "現在の妊娠月数は？",
+      sub: "新しく妊娠しているお子さんについて教えてください",
+      key: "q_pregnant_extra",
+      options: [
+        { label: "初期（1〜4ヶ月）", value: "early", emoji: "🌱" },
+        { label: "中期（5〜7ヶ月）", value: "mid", emoji: "🌸" },
+        { label: "後期（8ヶ月〜）", value: "late", emoji: "🎀" },
+      ],
+    },
+    q2_one: {
+      title: "お子さんの年齢は？",
+      sub: "現在の年齢を選んでください",
+      key: "q2_one",
+      options: [
+        { label: "0〜2歳", value: "0-2", emoji: "🍼" },
+        { label: "3〜5歳", value: "3-5", emoji: "🧸" },
+        { label: "6歳以上（小学生以上）", value: "6plus", emoji: "🎒" },
+      ],
+    },
+    q2_top: {
+      title: "一番上のお子さんの年齢は？",
+      sub: "現在の年齢を選んでください",
+      key: "q2_top",
+      options: [
+        { label: "3歳未満", value: "under3", emoji: "🍼" },
+        { label: "3〜5歳", value: "3-5", emoji: "🧸" },
+        { label: "6〜11歳", value: "6-11", emoji: "🎒" },
+        { label: "12歳以上", value: "12plus", emoji: "📚" },
+      ],
+    },
+    q2_second: {
+      // タイトルは Q1 の回答（2人 / 3人以上）で動的に切り替える
+      key: "q2_second",
+      options: [
+        { label: "3歳未満", value: "under3", emoji: "🍼" },
+        { label: "3〜5歳", value: "3-5", emoji: "🧸" },
+        { label: "6〜11歳", value: "6-11", emoji: "🎒" },
+        { label: "12歳以上", value: "12plus", emoji: "📚" },
+      ],
+    },
+    q3: {
+      title: "お住まいの都道府県は？",
+      sub: "自治体独自の支援金判定に使用します",
+      key: "q3",
+      options: PREFECTURES.map((name) => ({ label: name, value: name })),
+    },
+    q4: {
+      title: "世帯のおおよその年収は？",
+      sub: "所得制限の簡易判定に使用します",
+      key: "q4",
+      options: [
+        { label: "500万円未満", value: "low", emoji: "💰" },
+        { label: "500万〜900万円", value: "mid", emoji: "💰💰" },
+        { label: "900万円以上", value: "high", emoji: "💰💰💰" },
+      ],
+    },
+  };
+
+  // ---------------------------------------------------------
+  // フロー（画面遷移）の構築
+  // ---------------------------------------------------------
+  function buildFlowAfterQ1() {
+    if (state.q1 === "pregnant") {
+      flow = ["q1", "q2_pregnant", "q3", "q4", "result"];
+    } else if (state.q1 === "one") {
+      flow = ["q1", "q2_one", "q_pregnant_check", "q3", "q4", "result"];
+    } else if (state.q1 === "two" || state.q1 === "threeplus") {
+      flow = ["q1", "q2_top", "q2_second", "q_pregnant_check", "q3", "q4", "result"];
+    }
+  }
+
+  // 「現在、新しく妊娠していますか？」の回答に応じて、妊娠月数の質問を
+  // その場で挿入／削除する（既にお子さんがいる方の追加妊娠に対応）
+  function buildFlowAfterPregnantCheck() {
+    const idx = flow.indexOf("q_pregnant_check");
+    if (idx === -1) return;
+    const hasExtra = flow[idx + 1] === "q_pregnant_extra";
+    if (state.q_pregnant_check === "yes" && !hasExtra) {
+      flow.splice(idx + 1, 0, "q_pregnant_extra");
+    } else if (state.q_pregnant_check === "no" && hasExtra) {
+      flow.splice(idx + 1, 1);
+    }
+  }
+
+  // ステップ回答後にフローを組み立て直す必要がある質問のマップ
+  const STEP_TRANSITIONS = {
+    q1: buildFlowAfterQ1,
+    q_pregnant_check: buildFlowAfterPregnantCheck,
+  };
+
+  function totalQuestionSteps() {
+    // Q1回答前（flowがまだ組み立てられていない）はデフォルトの4問として表示
+    if (!state.q1) return 4;
+    // "result" を除いた質問数
+    return flow.length - 1;
+  }
+
+  // ---------------------------------------------------------
+  // 描画
+  // ---------------------------------------------------------
+  function render() {
+    const stepKey = flow[currentIndex];
+
+    // プログレスバー更新
+    const qNumber = Math.min(currentIndex + 1, totalQuestionSteps());
+    const percent = Math.round((currentIndex / totalQuestionSteps()) * 100);
+    progressBar.style.width = percent + "%";
+    if (stepKey === "result") {
+      progressLabel.textContent = "診断結果";
+      progressPercent.textContent = "100%";
+    } else {
+      progressLabel.textContent = "Q" + qNumber + " / " + totalQuestionSteps();
+      progressPercent.textContent = percent + "%";
+    }
+
+    if (stepKey === "result") {
+      renderResult();
+    } else {
+      renderQuestion(stepKey);
+    }
+  }
+
+  function transitionTo(nextIndex) {
+    stepContainer.classList.remove("fade-enter");
+    stepContainer.classList.add("fade-out");
+    setTimeout(() => {
+      currentIndex = nextIndex;
+      render();
+      stepContainer.classList.remove("fade-out");
+      stepContainer.classList.add("fade-enter");
+    }, 220);
+  }
+
+  function renderQuestion(stepKey) {
+    const def = questionDefs[stepKey];
+
+    let title = def.title;
+    let sub = def.sub || "";
+
+    // q2_second はQ1の回答（2人／3人以上）によってタイトルが変わる
+    let options = def.options.slice();
+    if (stepKey === "q2_second") {
+      title = state.q1 === "two" ? "下のお子さんの年齢は？" : "一番下のお子さんの年齢は？";
+      sub = "現在の年齢を選んでください";
+    }
+
+    const showBack = currentIndex > 0;
+
+    // Q3（都道府県）は47件あるため、コンパクトなチップ形式のスクロールグリッドで表示
+    const optionsHtml =
+      stepKey === "q3"
+        ? `
+          <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-72 overflow-y-auto pr-1">
+            ${options
+              .map(
+                (opt) => `
+              <button
+                type="button"
+                data-value="${opt.value}"
+                class="option-btn text-center bg-gradient-to-br from-white to-pinky-50 hover:from-pinky-100 hover:to-pinky-200 border-2 border-pinky-100 hover:border-pinky-300 rounded-xl px-2 py-3 shadow-sm">
+                <span class="font-bold text-gray-700 text-xs sm:text-sm">${opt.label}</span>
+              </button>
+            `
+              )
+              .join("")}
+          </div>
+        `
+        : `
+          <div class="grid grid-cols-1 gap-3">
+            ${options
+              .map(
+                (opt) => `
+              <button
+                type="button"
+                data-value="${opt.value}"
+                class="option-btn w-full flex items-center gap-3 text-left bg-gradient-to-br from-white to-pinky-50 hover:from-pinky-100 hover:to-pinky-200 border-2 border-pinky-100 hover:border-pinky-300 rounded-2xl px-4 py-4 shadow-sm">
+                <span class="text-2xl">${opt.emoji || "🍀"}</span>
+                <span class="font-bold text-gray-700 text-sm sm:text-base">${opt.label}</span>
+              </button>
+            `
+              )
+              .join("")}
+          </div>
+        `;
+
+    let html = `
+      <div class="pop">
+        <h2 class="text-lg sm:text-xl font-bold text-gray-700 mb-1 leading-snug">${title}</h2>
+        ${sub ? `<p class="text-xs sm:text-sm text-gray-400 mb-5">${sub}</p>` : `<div class="mb-5"></div>`}
+        ${optionsHtml}
+      </div>
+      <div class="mt-6 flex justify-start">
+        ${
+          showBack
+            ? `<button id="back-btn" type="button" class="text-xs sm:text-sm font-bold text-gray-400 hover:text-pinky-500 flex items-center gap-1 px-2 py-2">← 前の質問に戻る</button>`
+            : ""
+        }
+      </div>
+    `;
+
+    stepContainer.innerHTML = html;
+
+    stepContainer.querySelectorAll(".option-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const value = btn.getAttribute("data-value");
+        state[def.key] = value;
+
+        if (STEP_TRANSITIONS[stepKey]) {
+          STEP_TRANSITIONS[stepKey]();
+        }
+        transitionTo(currentIndex + 1);
+      });
+    });
+
+    const backBtn = document.getElementById("back-btn");
+    if (backBtn) {
+      backBtn.addEventListener("click", () => {
+        transitionTo(currentIndex - 1);
+      });
+    }
+  }
+
+  // ---------------------------------------------------------
+  // 給付金計算ロジック（2026年時点の制度をベースにした概算）
+  // ---------------------------------------------------------
+
+  // 年齢の代表値マップ
+  const AGE_MAP_ONE = { "0-2": 1, "3-5": 4, "6plus": 9 };
+  const AGE_MAP_TOP = { under3: 1, "3-5": 4, "6-11": 8, "12plus": 13 };
+  const AGE_MAP_SECOND = { under3: 1, "3-5": 4, "6-11": 8, "12plus": 13 };
+
+  function buildChildren() {
+    const children = [];
+
+    // 1. すでに生まれているお子さん
+    if (state.q1 === "one") {
+      children.push({ age: AGE_MAP_ONE[state.q2_one] });
+    } else if (state.q1 === "two") {
+      children.push({ age: AGE_MAP_TOP[state.q2_top] });
+      children.push({ age: AGE_MAP_SECOND[state.q2_second] });
+    } else if (state.q1 === "threeplus") {
+      const topAge = AGE_MAP_TOP[state.q2_top];
+      const youngestAge = AGE_MAP_SECOND[state.q2_second];
+      // 3人以上：上の子・一番下の子から真ん中の子の年齢を概算で補完
+      const middleAge = Math.max(0, Math.round((topAge + youngestAge) / 2));
+      children.push({ age: topAge });
+      children.push({ age: middleAge });
+      children.push({ age: youngestAge });
+    }
+
+    const result = children.map((c, i) => ({ order: i + 1, age: c.age, unborn: false }));
+
+    // 2. 新しく妊娠しているお子さん（既存の子の人数に関わらず一律で確認）
+    const isNewlyPregnant = state.q1 === "pregnant" || state.q_pregnant_check === "yes";
+    if (isNewlyPregnant) {
+      result.push({ order: result.length + 1, age: 0, unborn: true });
+    }
+
+    return result;
+  }
+
+  // 高校卒業（18歳の年度末）までに受け取れる児童手当の総額を概算
+  function childAllowanceTotal(age, order) {
+    const clampedAge = Math.min(Math.max(age, 0), 18);
+    if (order >= 3) {
+      // 第3子以降：0歳〜高校卒業まで一律 月30,000円
+      const months = (18 - clampedAge) * 12;
+      return Math.max(0, months) * 30000;
+    }
+    // 第1子・第2子：0〜3歳未満 月15,000円／3歳〜高校卒業 月10,000円
+    if (clampedAge < 3) {
+      const monthsUnder3 = (3 - clampedAge) * 12;
+      const monthsOver3 = 15 * 12; // 3歳〜18歳
+      return monthsUnder3 * 15000 + monthsOver3 * 10000;
+    }
+    const monthsOver3 = (18 - clampedAge) * 12;
+    return Math.max(0, monthsOver3) * 10000;
+  }
+
+  // 現在の月額（今もらえている／もらえる児童手当の月額）
+  function childAllowanceMonthly(age, order) {
+    if (order >= 3) return 30000;
+    return age < 3 ? 15000 : 10000;
+  }
+
+  // ---------------------------------------------------------
+  // 「今すぐ使える・申請できる給付金」チェックリスト
+  // ---------------------------------------------------------
+  function buildActionItems(state, children) {
+    const items = [];
+    const bornChildren = children.filter((c) => !c.unborn);
+    const unbornChildren = children.filter((c) => c.unborn);
+
+    // 児童手当（すでに生まれているお子さんがいる場合）
+    if (bornChildren.length > 0) {
+      const monthlyTotal = bornChildren.reduce(
+        (sum, c) => sum + childAllowanceMonthly(c.age, c.order),
+        0
+      );
+      items.push({
+        tag: "apply",
+        label: "児童手当（月額 " + formatYen(monthlyTotal) + "円）",
+        desc:
+          "毎年6月・10月・2月に指定口座へ振込まれます。出生・転入から15日以内に「認定請求書」の提出が必要です。まだ申請していない方はお住まいの市区町村窓口へ今すぐ！",
+      });
+
+      items.push({
+        tag: "apply",
+        label: "子ども医療費助成（医療証）",
+        desc:
+          "通院・入院の医療費が一部〜全額助成されます。対象年齢は自治体により異なります（小学校卒業〜高校卒業までが主流）。お住まいの市区町村窓口で申請できます。",
+      });
+    }
+
+    // 3〜5歳児クラスがいる場合：保育無償化
+    const hasKindergartenAge = bornChildren.some((c) => c.age >= 3 && c.age <= 5);
+    if (hasKindergartenAge) {
+      items.push({
+        tag: "auto",
+        label: "幼児教育・保育の無償化",
+        desc:
+          "3〜5歳児クラスの幼稚園・保育所・認定こども園などの利用料が無料になります（国の制度）。手続きは基本的に通っている施設経由で、追加の窓口申請は不要な場合がほとんどです。",
+      });
+    }
+
+    // 高校生年代の可能性がある場合
+    const mayBeHighSchoolAge =
+      state.q2_top === "12plus" ||
+      state.q2_second === "12plus" ||
+      state.q2_one === "6plus";
+    if (mayBeHighSchoolAge) {
+      items.push({
+        tag: "check",
+        label: "高等学校等就学支援金（授業料の実質無償化）",
+        desc:
+          "高校生のお子さんがいる場合、世帯年収がおおむね910万円未満であれば授業料支援を受けられます（私立高校はさらに手厚い加算あり）。在学する学校経由で申請します。該当するか一度ご確認を。",
+      });
+    }
+
+    // 妊娠中のお子さんがいる場合
+    if (unbornChildren.length > 0) {
+      items.push({
+        tag: "apply",
+        label: "出産・子育て応援ギフト（妊娠届出分 5万円）",
+        desc:
+          "母子手帳の交付を受けたあと、面談を経てお住まいの自治体からクーポンまたは現金5万円を受け取れます。まだの方は今すぐ申請可能です。",
+      });
+      items.push({
+        tag: "apply",
+        label: "妊婦健診費用の助成券",
+        desc:
+          "母子手帳交付時に自治体窓口で受け取れる健診費用の補助券です。まだ受け取っていない方は市区町村窓口へ。",
+      });
+      items.push({
+        tag: "check",
+        label: "出産育児一時金（50万円）の事前準備",
+        desc:
+          "出産後に申請しますが、多くの病院で使える「直接支払制度」を利用すれば窓口での負担が軽くなります。出産予定の医療機関に事前に確認しておきましょう。",
+      });
+    }
+
+    // 東京都：018サポート
+    if (state.q3 === "東京都" && children.length > 0) {
+      items.push({
+        tag: "apply",
+        label: "東京都『018サポート』",
+        desc:
+          "0〜18歳の都内在住のお子さんが対象、月5,000円が給付されます。毎年度、公式サイトからの申請（口座情報登録）が必要です。未登録の方は今すぐ手続きを。",
+      });
+    }
+
+    return items;
+  }
+
+  function calculateResult() {
+    const children = buildChildren();
+    const breakdown = [];
+    let total = 0;
+
+    // 1. 児童手当（子どもごと）
+    children.forEach((child) => {
+      const amount = childAllowanceTotal(child.age, child.order);
+      total += amount;
+      const orderLabel = child.order === 1 ? "第1子" : child.order === 2 ? "第2子" : "第" + child.order + "子（以降）";
+      const ageLabel = child.unborn ? "妊娠中のお子さん" : "現在" + child.age + "歳想定";
+      const rateNote =
+        child.order >= 3
+          ? "0歳〜高校卒業まで一律 月3万円（第3子以降の増額ルール）"
+          : child.age < 3
+          ? "3歳未満は月1.5万円、3歳〜高校卒業は月1万円"
+          : "3歳〜高校卒業まで月1万円";
+      breakdown.push({
+        label: "児童手当（" + orderLabel + "・" + ageLabel + "）",
+        amount: amount,
+        desc: rateNote,
+      });
+    });
+
+    // 2. 出産育児一時金・出産子育て応援ギフト（妊娠中のお子さんがいる場合）
+    const unbornCount = children.filter((c) => c.unborn).length;
+    if (unbornCount > 0) {
+      const boshiAmount = 500000 * unbornCount;
+      total += boshiAmount;
+      breakdown.push({
+        label: "出産育児一時金",
+        amount: boshiAmount,
+        desc: "出産時に加入する健康保険から支給（1児あたり50万円）",
+      });
+
+      const ouenAmount = 100000 * unbornCount;
+      total += ouenAmount;
+      breakdown.push({
+        label: "出産・子育て応援ギフト（国の給付金）",
+        amount: ouenAmount,
+        desc: "妊娠届出時5万円＋出生届出後5万円のクーポン・現金給付（自治体経由）",
+      });
+    }
+
+    // 3. 自治体独自の支援金
+    if (state.q3 === "東京都") {
+      let tokyoTotal = 0;
+      children.forEach((child) => {
+        const clampedAge = Math.min(Math.max(child.age, 0), 18);
+        const months = (18 - clampedAge) * 12;
+        tokyoTotal += Math.max(0, months) * 5000;
+      });
+      total += tokyoTotal;
+      breakdown.push({
+        label: "東京都『018サポート』",
+        amount: tokyoTotal,
+        desc: "都内在住0〜18歳の子ども1人につき月5,000円を給付（所得制限なし）",
+      });
+    } else {
+      breakdown.push({
+        label: (state.q3 || "お住まいの自治体") + "の独自支援",
+        amount: 0,
+        desc: "都道府県・市区町村によっては独自の給付金・助成制度（医療費助成など）がある場合があります。詳しくは" + (state.q3 || "お住まいの自治体") + "や市区町村の窓口・公式サイトでご確認ください。",
+      });
+    }
+
+    const actionItems = buildActionItems(state, children);
+
+    return { total, breakdown, children, actionItems };
+  }
+
+  function formatMan(yen) {
+    const man = Math.round(yen / 10000);
+    return man.toLocaleString("ja-JP");
+  }
+  function formatYen(yen) {
+    return yen.toLocaleString("ja-JP");
+  }
+
+  // ---------------------------------------------------------
+  // 結果画面
+  // ---------------------------------------------------------
+  function renderResult() {
+    const result = calculateResult();
+
+    const incomeNote =
+      "2024年10月の制度改正により、児童手当の所得制限は撤廃されました。年収に関わらず満額を受け取れます。" +
+      (state.q4 === "high"
+        ? "（高校の授業料支援など一部の制度では年収により支給額が変わる場合があります）"
+        : "");
+
+    const breakdownHtml = result.breakdown
+      .map(
+        (item) => `
+      <li class="flex justify-between items-start gap-3 py-3 border-b border-pinky-50 last:border-b-0">
+        <div class="flex-1">
+          <p class="font-bold text-gray-700 text-sm sm:text-base">${item.label}</p>
+          <p class="text-xs text-gray-400 mt-0.5 leading-relaxed">${item.desc}</p>
+        </div>
+        <div class="whitespace-nowrap font-black ${item.amount > 0 ? "text-pinky-500" : "text-gray-300"} text-sm sm:text-base">
+          ${item.amount > 0 ? "+" + formatYen(item.amount) + "円" : "―"}
+        </div>
+      </li>
+    `
+      )
+      .join("");
+
+    const actionTagMap = {
+      apply: { label: "要申請", cls: "bg-pinky-100 text-pinky-500" },
+      auto: { label: "手続き不要", cls: "bg-mint-100 text-mint-500" },
+      check: { label: "要確認", cls: "bg-cream-200 text-gray-500" },
+    };
+
+    const actionItemsHtml = result.actionItems.length
+      ? result.actionItems
+          .map((item) => {
+            const tag = actionTagMap[item.tag];
+            return `
+      <li class="py-3 border-b border-mint-100 last:border-b-0">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${tag.cls}">${tag.label}</span>
+          <p class="font-bold text-gray-700 text-sm sm:text-base">${item.label}</p>
+        </div>
+        <p class="text-xs text-gray-400 leading-relaxed">${item.desc}</p>
+      </li>
+    `;
+          })
+          .join("")
+      : `<li class="py-3 text-xs text-gray-400">現時点で該当する項目はありません。</li>`;
+
+    const html = `
+      <div class="pop">
+        <div class="text-center bg-gradient-to-br from-pinky-100 via-cream-100 to-mint-100 rounded-3xl px-4 py-6 mb-6 shadow-soft">
+          <p class="text-sm sm:text-base font-bold text-gray-600 mb-1">高校卒業までにあなたがもらえる総額</p>
+          <p class="text-4xl sm:text-5xl font-black text-pinky-500 leading-tight">
+            最大 <span class="text-5xl sm:text-6xl">${formatMan(result.total)}</span> 万円！
+          </p>
+          <p class="text-[11px] sm:text-xs text-gray-400 mt-2">※児童手当・出産関連給付・自治体独自支援の合計概算</p>
+        </div>
+
+        <button id="share-btn" type="button" class="option-btn w-full flex items-center justify-center gap-1 text-center bg-white border-2 border-pinky-200 hover:border-pinky-300 text-pinky-500 font-bold text-xs sm:text-sm rounded-2xl px-3 py-3 shadow-sm mb-1">
+          📸 結果をシェアする
+        </button>
+        <p id="share-status" class="text-center text-[11px] text-gray-400 mb-6 min-h-[14px]"></p>
+
+        <h3 class="font-bold text-gray-600 mb-2 text-sm sm:text-base">🔔 今すぐ使える・申請できる給付金</h3>
+        <ul class="bg-pinky-50/60 rounded-2xl px-4 mb-6">
+          ${actionItemsHtml}
+        </ul>
+
+        <h3 class="font-bold text-gray-600 mb-2 text-sm sm:text-base">📋 高校卒業までの内訳（合計）</h3>
+        <ul class="bg-mint-50/60 rounded-2xl px-4 mb-4">
+          ${breakdownHtml}
+        </ul>
+
+        <p class="text-[11px] sm:text-xs text-gray-400 bg-cream-100 rounded-xl px-4 py-3 mb-6 leading-relaxed">
+          💡 ${incomeNote}
+        </p>
+
+        <div class="space-y-3 mb-6">
+          <a href="#" class="option-btn block text-center bg-gradient-to-r from-pinky-400 to-pinky-500 hover:from-pinky-500 hover:to-pinky-600 text-white font-bold text-sm sm:text-base rounded-2xl px-4 py-4 shadow-soft leading-snug">
+            【全員対象】今後の教育資金・マイホーム計画を<br class="hidden sm:block">子育て専門FPに無料相談して、家計を賢く節約する<br>
+            <span class="text-[11px] sm:text-xs font-normal opacity-90">（プレゼント付き）</span>
+          </a>
+          <a href="#" class="option-btn block text-center bg-gradient-to-r from-mint-300 to-mint-400 hover:from-mint-400 hover:to-mint-500 text-white font-bold text-sm sm:text-base rounded-2xl px-4 py-4 shadow-card leading-snug">
+            【今のうちに】各社の学資保険・子育て積立プランを<br class="hidden sm:block">無料で一括資料請求する
+          </a>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <button id="back-btn" type="button" class="text-xs sm:text-sm font-bold text-gray-400 hover:text-pinky-500 px-2 py-2">← 前の質問に戻る</button>
+          <button id="restart-btn" type="button" class="text-xs sm:text-sm font-bold text-pinky-400 hover:text-pinky-500 px-2 py-2">🔄 最初からやり直す</button>
+        </div>
+      </div>
+    `;
+
+    stepContainer.innerHTML = html;
+    updateShareCard(result);
+
+    document.getElementById("back-btn").addEventListener("click", () => {
+      transitionTo(currentIndex - 1);
+    });
+    document.getElementById("restart-btn").addEventListener("click", () => {
+      Object.keys(state).forEach((k) => (state[k] = null));
+      flow = ["q1"];
+      transitionTo(0);
+    });
+    document.getElementById("share-btn").addEventListener("click", () => {
+      shareResult();
+    });
+  }
+
+  // ---------------------------------------------------------
+  // SNSシェア（結果画像の生成・共有）
+  // 投稿文はユーザー自身がSNS側で入力する想定のため、
+  // ここでは「画像」と「トップページURL」だけを渡す。
+  // ---------------------------------------------------------
+  function setShareStatus(message) {
+    const el = document.getElementById("share-status");
+    if (el) el.textContent = message;
+  }
+
+  function updateShareCard(result) {
+    const card = document.getElementById("share-card");
+    if (!card) return;
+
+    const highlights = result.breakdown.filter((item) => item.amount > 0).slice(0, 3);
+    const highlightsHtml = highlights
+      .map(
+        (item) => `
+      <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.75); border-radius:14px; padding:10px 16px; margin-bottom:8px;">
+        <span style="font-weight:700; color:#4b5563; font-size:15px;">${item.label}</span>
+        <span style="font-weight:900; color:#ff6690; font-size:15px; white-space:nowrap; margin-left:12px;">${formatYen(item.amount)}円</span>
+      </div>`
+      )
+      .join("");
+
+    card.innerHTML = `
+      <div style="display:inline-block; background:#ffffff; color:#ff6690; font-weight:700; font-size:14px; padding:6px 16px; border-radius:999px; margin-bottom:16px;">2026年最新対応</div>
+      <div style="font-weight:700; font-size:18px; color:#4b5563; margin-bottom:10px;">子育て給付金・手当 診断結果</div>
+      <div style="font-weight:900; font-size:20px; color:#374151; margin-bottom:4px;">高校卒業までにもらえる総額</div>
+      <div style="font-weight:900; font-size:56px; color:#ff6690; line-height:1.15; margin-bottom:20px;">最大 ${formatMan(
+        result.total
+      )}<span style="font-size:26px;">万円！</span></div>
+      <div style="margin-bottom:20px;">${highlightsHtml}</div>
+      <div style="font-weight:700; font-size:15px; color:#6b7280; margin-bottom:4px;">▶ わが家はいくら？無料で診断してみる</div>
+      <div style="font-weight:700; font-size:15px; color:#ff6690; word-break:break-all;">${TOP_URL}</div>
+    `;
+  }
+
+  // 1タップで「画像」と「URL」の両方を相手に渡す。
+  // 端末が対応していればOSの共有シートで画像+URLを一括送信、
+  // 非対応環境（主にPC）では画像のダウンロードとURLのクリップボードコピーを同時に行う。
+  async function shareResult() {
+    const card = document.getElementById("share-card");
+    if (!window.html2canvas || !card) {
+      setShareStatus("この端末では画像シェアに対応していません。");
+      return;
+    }
+
+    setShareStatus("準備中…");
+    let canvas;
+    try {
+      canvas = await window.html2canvas(card, { scale: 2, backgroundColor: "#fff5f7" });
+    } catch (e) {
+      setShareStatus("画像の作成に失敗しました。");
+      return;
+    }
+
+    canvas.toBlob(async (blob) => {
+      if (!blob) {
+        setShareStatus("画像の作成に失敗しました。");
+        return;
+      }
+      const file = new File([blob], "kosodate-kyufu-shindan.png", { type: "image/png" });
+
+      // 対応端末：共有シートに画像とURLをまとめて渡す（1アクションで完結）
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            files: [file],
+            url: TOP_URL,
+            title: "子育て給付金・手当 診断結果",
+          });
+          setShareStatus("");
+          return;
+        } catch (e) {
+          if (e && e.name === "AbortError") {
+            setShareStatus("");
+            return;
+          }
+          // 共有に失敗した場合はダウンロード＋コピーにフォールバック
+        }
+      }
+
+      // 非対応環境：画像のダウンロードとURLコピーを同時に実行
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = objectUrl;
+      link.download = "kosodate-kyufu-shindan.png";
+      link.click();
+      URL.revokeObjectURL(objectUrl);
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+          await navigator.clipboard.writeText(TOP_URL);
+          setShareStatus("画像を保存し、URLをコピーしました！SNS投稿時に貼り付けてください。");
+        } catch (e) {
+          setShareStatus("画像を保存しました。URL: " + TOP_URL);
+        }
+      } else {
+        setShareStatus("画像を保存しました。URL: " + TOP_URL);
+      }
+    }, "image/png");
+  }
+
+  // ---------------------------------------------------------
+  // 初期化
+  // ---------------------------------------------------------
+  render();
+  stepContainer.classList.add("fade-enter");
+})();
+</script>
+</body>
+</html>
